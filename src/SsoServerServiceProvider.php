@@ -11,8 +11,6 @@ class SsoServerServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('filament-sso-server')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigrations();
+            ->hasTranslations();
     }
 }

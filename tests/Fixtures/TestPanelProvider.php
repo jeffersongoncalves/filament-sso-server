@@ -4,6 +4,7 @@ namespace JeffersonGoncalves\Filament\SsoServer\Tests\Fixtures;
 
 use Filament\Panel;
 use Filament\PanelProvider;
+use JeffersonGoncalves\Filament\SsoServer\SsoServerPlugin;
 
 class TestPanelProvider extends PanelProvider
 {
@@ -13,6 +14,7 @@ class TestPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login();
+            ->login()
+            ->plugin(SsoServerPlugin::make());
     }
 }
