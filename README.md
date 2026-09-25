@@ -27,6 +27,8 @@ Filament admin UI for [jeffersongoncalves/laravel-sso-server](https://github.com
 
 | Package Version | Filament Version |
 |-----------------|------------------|
+| [1.x](https://github.com/jeffersongoncalves/filament-sso-server/tree/1.x) | 3.x |
+| [2.x](https://github.com/jeffersongoncalves/filament-sso-server/tree/2.x) | 4.x |
 | [3.x](https://github.com/jeffersongoncalves/filament-sso-server/tree/3.x) | 5.x |
 
 ## Installation
