@@ -1,11 +1,11 @@
 <?php
 
-namespace JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\Pages;
+namespace JeffersonGoncalves\Filament\SsoServer\Resources\SsoClientResource\Pages;
 
+use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\SsoClientResource;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\Tables\SsoClientsTable;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClientResource;
 
 class EditSsoClient extends EditRecord
 {
@@ -14,7 +14,7 @@ class EditSsoClient extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            SsoClientsTable::rotateSecretAction(),
+            SsoClientResource::configureRotateSecretAction(Action::make('rotateSecret')),
             DeleteAction::make(),
         ];
     }

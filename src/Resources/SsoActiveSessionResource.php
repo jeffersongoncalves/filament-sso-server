@@ -1,24 +1,34 @@
 <?php
 
-namespace JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessions\Tables;
+namespace JeffersonGoncalves\Filament\SsoServer\Resources;
 
-use Filament\Actions\Action;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Notifications\Notification;
-use Filament\Support\Icons\Heroicon;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use JeffersonGoncalves\Filament\SsoServer\Concerns\HasPluginNavigationGroup;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessionResource\Pages\ListSsoActiveSessions;
 use JeffersonGoncalves\SsoServer\Facades\SsoServer;
 use JeffersonGoncalves\SsoServer\Models\SsoActiveSession;
 
-class SsoActiveSessionsTable
+class SsoActiveSessionResource extends Resource
 {
-    public static function configure(Table $table): Table
+    use HasPluginNavigationGroup;
+
+    protected static ?string $model = SsoActiveSession::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+
+    protected static ?int $navigationSort = 2;
+
+    public static function table(Table $table): Table
     {
         return $table
             ->columns([
@@ -59,14 +69,14 @@ class SsoActiveSessionsTable
                         blank: fn (Builder $query): Builder => $query,
                     ),
             ])
-            ->recordActions([
+            ->actions([
                 DeleteAction::make()
                     ->label(__('filament-sso-server::default.sessions.actions.revoke'))
                     ->modalHeading(__('filament-sso-server::default.sessions.actions.revoke'))
                     ->modalDescription(__('filament-sso-server::default.sessions.actions.revoke_description')),
                 Action::make('logoutUser')
                     ->label(__('filament-sso-server::default.sessions.actions.logout_user'))
-                    ->icon(Heroicon::OutlinedArrowRightStartOnRectangle)
+                    ->icon('heroicon-o-arrow-right-start-on-rectangle')
                     ->color('danger')
                     ->requiresConfirmation()
                     ->modalHeading(__('filament-sso-server::default.sessions.actions.logout_user'))
@@ -81,11 +91,34 @@ class SsoActiveSessionsTable
                             ->send();
                     }),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make()
                         ->label(__('filament-sso-server::default.sessions.actions.revoke_selected')),
                 ]),
             ]);
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListSsoActiveSessions::route('/'),
+        ];
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament-sso-server::default.sessions.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament-sso-server::default.sessions.plural_label');
+    }
+
+    // Sessions are issued by the token exchange, never by hand.
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }

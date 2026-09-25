@@ -1,14 +1,14 @@
 <div class="filament-hidden">
 
-![Filament SSO Server](https://raw.githubusercontent.com/jeffersongoncalves/filament-sso-server/2.x/art/jeffersongoncalves-filament-sso-server.png)
+![Filament SSO Server](https://raw.githubusercontent.com/jeffersongoncalves/filament-sso-server/1.x/art/jeffersongoncalves-filament-sso-server.png)
 
 </div>
 
 # Filament SSO Server
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jeffersongoncalves/filament-sso-server.svg?style=flat-square)](https://packagist.org/packages/jeffersongoncalves/filament-sso-server)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-sso-server/tests.yml?branch=2.x&label=tests&style=flat-square)](https://github.com/jeffersongoncalves/filament-sso-server/actions?query=workflow%3Atests+branch%3A2.x)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-sso-server/pint.yml?branch=2.x&label=code%20style&style=flat-square)](https://github.com/jeffersongoncalves/filament-sso-server/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3A2.x)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-sso-server/tests.yml?branch=1.x&label=tests&style=flat-square)](https://github.com/jeffersongoncalves/filament-sso-server/actions?query=workflow%3Atests+branch%3A1.x)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-sso-server/pint.yml?branch=1.x&label=code%20style&style=flat-square)](https://github.com/jeffersongoncalves/filament-sso-server/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3A1.x)
 [![Total Downloads](https://img.shields.io/packagist/dt/jeffersongoncalves/filament-sso-server.svg?style=flat-square)](https://packagist.org/packages/jeffersongoncalves/filament-sso-server)
 [![License](https://img.shields.io/packagist/l/jeffersongoncalves/filament-sso-server.svg?style=flat-square)](LICENSE.md)
 
@@ -36,7 +36,7 @@ Filament admin UI for [jeffersongoncalves/laravel-sso-server](https://github.com
 Install and set up [laravel-sso-server](https://github.com/jeffersongoncalves/laravel-sso-server) first (migrations and signing keys), then install the plugin via composer:
 
 ```bash
-composer require jeffersongoncalves/filament-sso-server:"^2.0"
+composer require jeffersongoncalves/filament-sso-server:"^1.0"
 ```
 
 ## Usage

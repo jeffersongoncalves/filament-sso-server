@@ -1,9 +1,8 @@
 <?php
 
-use Filament\Actions\Testing\TestAction;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\Pages\CreateSsoClient;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\Pages\EditSsoClient;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\Pages\ListSsoClients;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClientResource\Pages\CreateSsoClient;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClientResource\Pages\EditSsoClient;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClientResource\Pages\ListSsoClients;
 use JeffersonGoncalves\SsoServer\Models\SsoClient;
 
 use function Pest\Livewire\livewire;
@@ -56,12 +55,22 @@ it('does not let the edit form change the client id', function () {
         ->client_id->toBe($clientId);
 });
 
-it('rotates the client secret', function () {
+it('rotates the client secret from the table', function () {
     $client = createClient();
 
     livewire(ListSsoClients::class)
-        ->callAction(TestAction::make('rotateSecret')->table($client))
+        ->callTableAction('rotateSecret', $client)
         ->assertNotified(__('filament-sso-server::default.clients.notifications.rotated'));
 
     expect($client->fresh()->client_secret)->not->toBe('old-secret')->toHaveLength(64);
+});
+
+it('rotates the client secret from the edit page', function () {
+    $client = createClient();
+
+    livewire(EditSsoClient::class, ['record' => $client->getRouteKey()])
+        ->callAction('rotateSecret')
+        ->assertNotified(__('filament-sso-server::default.clients.notifications.rotated'));
+
+    expect($client->fresh()->client_secret)->not->toBe('old-secret');
 });

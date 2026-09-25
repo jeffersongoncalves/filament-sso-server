@@ -1,11 +1,11 @@
 <?php
 
-namespace JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\Pages;
+namespace JeffersonGoncalves\Filament\SsoServer\Resources\SsoClientResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Str;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\SsoClientResource;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClientResource;
 use JeffersonGoncalves\SsoServer\Models\SsoClient;
 
 class CreateSsoClient extends CreateRecord

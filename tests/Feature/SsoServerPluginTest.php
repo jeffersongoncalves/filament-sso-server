@@ -2,8 +2,8 @@
 
 use Filament\Facades\Filament;
 use Filament\Panel;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessions\SsoActiveSessionResource;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\SsoClientResource;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessionResource;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClientResource;
 use JeffersonGoncalves\Filament\SsoServer\SsoServerPlugin;
 use JeffersonGoncalves\Filament\SsoServer\Widgets\SsoOverviewWidget;
 

@@ -1,9 +1,8 @@
 <?php
 
-use Filament\Actions\Testing\TestAction;
 use Illuminate\Support\Facades\Queue;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessions\Pages\ListSsoActiveSessions;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessions\SsoActiveSessionResource;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessionResource;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessionResource\Pages\ListSsoActiveSessions;
 use JeffersonGoncalves\SsoServer\Jobs\DispatchSingleLogoutJob;
 use JeffersonGoncalves\SsoServer\Models\SsoActiveSession;
 
@@ -38,7 +37,7 @@ it('revokes a single session', function () {
     $other = createSession($client);
 
     livewire(ListSsoActiveSessions::class)
-        ->callAction(TestAction::make('delete')->table($session));
+        ->callTableAction('delete', $session);
 
     expect(SsoActiveSession::find($session->id))->toBeNull()
         ->and(SsoActiveSession::find($other->id))->not->toBeNull();
@@ -54,7 +53,7 @@ it('logs the user out of every client with single logout', function () {
     $otherUser = createSession($portal, ['user_id' => '8']);
 
     livewire(ListSsoActiveSessions::class)
-        ->callAction(TestAction::make('logoutUser')->table($session));
+        ->callTableAction('logoutUser', $session);
 
     expect(SsoActiveSession::where('user_id', '7')->count())->toBe(0)
         ->and(SsoActiveSession::find($otherUser->id))->not->toBeNull();

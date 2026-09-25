@@ -2,9 +2,9 @@ name: PHPStan
 
 on:
   push:
-    branches: [2.x, main]
+    branches: [1.x, main]
   pull_request:
-    branches: [2.x, main]
+    branches: [1.x, main]
 
 jobs:
   analyse:

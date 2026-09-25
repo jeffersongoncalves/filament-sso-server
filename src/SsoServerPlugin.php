@@ -4,8 +4,8 @@ namespace JeffersonGoncalves\Filament\SsoServer;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessions\SsoActiveSessionResource;
-use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClients\SsoClientResource;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoActiveSessionResource;
+use JeffersonGoncalves\Filament\SsoServer\Resources\SsoClientResource;
 use JeffersonGoncalves\Filament\SsoServer\Widgets\SsoOverviewWidget;
 
 class SsoServerPlugin implements Plugin
